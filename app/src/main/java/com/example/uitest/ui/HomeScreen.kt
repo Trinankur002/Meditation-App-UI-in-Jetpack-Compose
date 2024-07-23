@@ -41,7 +41,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.uitest.R
-import com.example.uitest.datas.BottomMenuContentList
 import com.example.uitest.datas.Feature
 import com.example.uitest.datas.FeaturesItemList
 import com.example.uitest.datas.standardQuadFromTo
@@ -315,13 +314,4 @@ fun FeaturedItems(features: Feature) {
             }
         }
     }
-}
-
-
-
-
-@Preview
-@Composable
-private fun PreviewHomeScreen() {
-    HomeScreen()
 }

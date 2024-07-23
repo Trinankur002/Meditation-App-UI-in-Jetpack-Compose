@@ -13,11 +13,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import com.example.uitest.datas.BottomMenuContent
 import androidx.compose.ui.Modifier
@@ -32,15 +33,23 @@ import com.example.uitest.ui.theme.Blue900
 @Composable
 fun BottomMenu(
     items: List<BottomMenuContent>,
+    currentRoute: String,
     modifier: Modifier = Modifier,
     activeHighlightColor: Color = Blue300,
     activeTextColor: Color = Color.White,
     inactiveTextColor: Color = Blue600,
-    initialSelectedItemIndex: Int = 0
+    initialSelectedItemIndex: Int = 0,
+    onItemClick: (String) -> Unit
 ) {
     var selectedItemIndex by remember {
         mutableStateOf(initialSelectedItemIndex)
     }
+
+    // Update selected item index based on the current route
+    LaunchedEffect(currentRoute) {
+        selectedItemIndex = items.indexOfFirst { it.title.lowercase() == currentRoute }
+    }
+
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically,
@@ -58,10 +67,13 @@ fun BottomMenu(
                 inactiveTextColor = inactiveTextColor
             ) {
                 selectedItemIndex = index
+                onItemClick(item.title.lowercase())
             }
         }
     }
 }
+
+
 
 @Composable
 fun BottomMenuItem(
