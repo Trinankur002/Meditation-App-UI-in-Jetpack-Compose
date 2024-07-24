@@ -25,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -34,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,8 +45,6 @@ import com.example.uitest.R
 import com.example.uitest.datas.TimeOfMeditate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-
 
 @Preview
 @Composable
@@ -77,22 +77,28 @@ fun MeditationScreen() {
 @SuppressLint("DefaultLocale")
 @Composable
 fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
-    var timeInSeconds by remember { mutableStateOf(totalTimeInSeconds) }
+    var timeInSeconds by remember { mutableIntStateOf(totalTimeInSeconds) }
     val minutes = timeInSeconds / 60
     val seconds = timeInSeconds % 60
 
     var isPlaying by remember { mutableStateOf(false) }
     var isReadyToReset by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+    var playMySound = MediaPlayer.create(context, soundResId)
 
     fun startMeditate() {
         coroutineScope.launch {
             while (timeInSeconds > 0 && isPlaying) {
                 timeInSeconds--
                 delay(1000L)
-//                if (timeInSeconds == 0) {
-//                    playMySound(soundResId, this)
-//                }
+                if (timeInSeconds == 0) {
+                    playMySound.start()
+                    delay(3000L)
+                    playMySound?.release()
+                    playMySound = null
+                    isPlaying = false
+                }
             }
         }
     }
@@ -126,13 +132,16 @@ fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
                 verticalAlignment = Alignment.CenterVertically,
             ) { // Row space
                 Box(
+
                     modifier = Modifier
                         .size(40.dp)
                         .clip(CircleShape)
                         .background(color = Color(0xEE5C73F1))
                         .clickable {
-                            if (timeInSeconds>=300){timeInSeconds -= 300}
-                            else {timeInSeconds = 0}
+                            if (timeInSeconds > 300) { timeInSeconds -= 300 ; return@clickable }
+                            if (timeInSeconds == 300 || timeInSeconds < 300 && timeInSeconds > 0) { timeInSeconds -= 60 ; return@clickable }
+                            if (timeInSeconds <= 60 ){timeInSeconds = 0 ; return@clickable }
+                            if (timeInSeconds < 0  || timeInSeconds == 0) { timeInSeconds = 0 }
                         }
                 ) {
                     Icon(
@@ -174,7 +183,8 @@ fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
                         .clip(CircleShape)
                         .background(color = Color(0xEE5C73F1))
                         .clickable {
-                            timeInSeconds += 300
+                            if (timeInSeconds < 300){timeInSeconds = 300}
+                            else timeInSeconds += 300
                         }
                 ) {
                     Icon(
