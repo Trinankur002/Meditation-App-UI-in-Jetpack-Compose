@@ -1,7 +1,6 @@
 package com.example.uitest.datas
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.geometry.Offset
-import kotlin.math.abs
+import androidx.compose.ui.graphics.Path
 
 //fun Path.standardQuadFromTo(from: Offset, to: Offset) {
 //    quadraticBezierTo(

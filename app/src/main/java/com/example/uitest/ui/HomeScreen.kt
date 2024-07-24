@@ -45,6 +45,7 @@ import com.example.uitest.datas.Feature
 import com.example.uitest.datas.FeaturesItemList
 import com.example.uitest.datas.standardQuadFromTo
 
+@Preview
 @Composable
 fun HomeScreen() {
     Column(
@@ -54,7 +55,7 @@ fun HomeScreen() {
             .background(Color(0xFF000B4B))
             .fillMaxSize()
         ){
-            Column {
+            Column() {
                 Greeting()
                 ChipSection(chips = listOf("Sweet Sleep", "Insomnia", "Depression"))
                 CurrentMeditation()
@@ -185,8 +186,8 @@ fun CurrentMeditation(color: Color = Color(0xD2DF2161)) {
                 }
         ){
             Icon(
-                if (isPlaying){ painterResource(id = R.drawable.play_arrow) }
-                else { painterResource(id =R.drawable.pause ) },
+                if (isPlaying){ painterResource(id = R.drawable.pause) }
+                else { painterResource(id =R.drawable.play_arrow ) },
                 contentDescription = "Play/Pause",
                 tint = Color(0xD2F5F5F5),
                 modifier = Modifier.size(40.dp)
