@@ -45,7 +45,6 @@ fun BottomMenu(
         mutableStateOf(initialSelectedItemIndex)
     }
 
-    // Update selected item index based on the current route
     LaunchedEffect(currentRoute) {
         selectedItemIndex = items.indexOfFirst { it.title.lowercase() == currentRoute }
     }

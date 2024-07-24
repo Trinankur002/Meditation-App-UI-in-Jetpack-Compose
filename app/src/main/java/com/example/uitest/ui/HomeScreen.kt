@@ -45,18 +45,21 @@ import com.example.uitest.datas.Feature
 import com.example.uitest.datas.FeaturesItemList
 import com.example.uitest.datas.standardQuadFromTo
 
-
 @Composable
 fun HomeScreen() {
-    Box(modifier = Modifier
-        .background(Color(0xFF000B4B))
-        .fillMaxSize()
-    ){
-        Column {
-            Greeting()
-            ChipSection(chips = listOf("Sweet Sleep", "Insomnia", "Depression"))
-            CurrentMeditation()
-            FeaturedSection(FeaturesItemList)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        Box(modifier = Modifier
+            .background(Color(0xFF000B4B))
+            .fillMaxSize()
+        ){
+            Column {
+                Greeting()
+                ChipSection(chips = listOf("Sweet Sleep", "Insomnia", "Depression"))
+                CurrentMeditation()
+                FeaturedSection(FeaturesItemList)
+            }
         }
     }
 }
@@ -315,3 +318,5 @@ fun FeaturedItems(features: Feature) {
         }
     }
 }
+
+
