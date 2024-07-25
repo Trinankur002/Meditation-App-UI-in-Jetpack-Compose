@@ -1,7 +1,7 @@
-package com.example.uitest.datas
+package com.example.takecare.datas
 
 import androidx.annotation.DrawableRes
-import com.example.uitest.R
+import com.example.takecare.R
 
 data class BottomMenuContent(
     val title: String,

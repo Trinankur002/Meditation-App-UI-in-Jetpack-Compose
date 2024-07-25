@@ -1,14 +1,14 @@
-package com.example.uitest.datas
+package com.example.takecare.datas
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.uitest.ui.HomeScreen
-import com.example.uitest.ui.MeditationScreen
-import com.example.uitest.ui.MusicScreen
-import com.example.uitest.ui.ProfileScreen
-import com.example.uitest.ui.SleepScreen
+import com.example.takecare.ui.HomeScreen
+import com.example.takecare.ui.MeditationScreen
+import com.example.takecare.ui.MusicScreen
+import com.example.takecare.ui.ProfileScreen
+import com.example.takecare.ui.SleepScreen
 
 @Composable
 fun NavigationHost(navController: NavHostController) {

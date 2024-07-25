@@ -1,4 +1,4 @@
-package com.example.uitest
+package com.example.takecare
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

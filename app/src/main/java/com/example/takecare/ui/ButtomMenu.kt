@@ -1,4 +1,4 @@
-package com.example.uitest.ui
+package com.example.takecare.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,10 +24,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.uitest.datas.BottomMenuContent
-import com.example.uitest.ui.theme.Blue300
-import com.example.uitest.ui.theme.Blue600
-import com.example.uitest.ui.theme.Blue900
+import com.example.takecare.datas.BottomMenuContent
+import com.example.takecare.ui.theme.Blue300
+import com.example.takecare.ui.theme.Blue600
+import com.example.takecare.ui.theme.Blue900
 
 @Composable
 fun BottomMenu(

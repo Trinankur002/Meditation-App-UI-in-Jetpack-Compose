@@ -1,4 +1,4 @@
-package com.example.uitest.datas
+package com.example.takecare.datas
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

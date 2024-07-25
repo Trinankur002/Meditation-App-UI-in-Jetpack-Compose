@@ -1,4 +1,4 @@
-package com.example.uitest.datas
+package com.example.takecare.datas
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 

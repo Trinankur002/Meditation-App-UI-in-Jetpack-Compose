@@ -1,4 +1,4 @@
-package com.example.uitest.ui
+package com.example.takecare.ui
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,10 +40,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.uitest.R
-import com.example.uitest.datas.Feature
-import com.example.uitest.datas.FeaturesItemList
-import com.example.uitest.datas.standardQuadFromTo
+import com.example.takecare.R
+import com.example.takecare.datas.Feature
+import com.example.takecare.datas.FeaturesItemList
+import com.example.takecare.datas.standardQuadFromTo
 
 @Preview
 @Composable

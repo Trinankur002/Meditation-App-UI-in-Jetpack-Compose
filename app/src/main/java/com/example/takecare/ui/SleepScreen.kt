@@ -1,4 +1,4 @@
-package com.example.uitest.ui
+package com.example.takecare.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.uitest.ui.theme.Cyan400
+import com.example.takecare.ui.theme.Cyan400
 
 @Composable
 fun SleepScreen() {

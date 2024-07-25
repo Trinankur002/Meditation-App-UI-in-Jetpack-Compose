@@ -1,4 +1,4 @@
-package com.example.uitest.ui.theme
+package com.example.takecare.ui.theme
 
 import android.app.Activity
 import android.os.Build

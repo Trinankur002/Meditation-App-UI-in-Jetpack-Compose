@@ -1,4 +1,4 @@
-package com.example.uitest
+package com.example.takecare
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -19,12 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.compose.rememberNavController
-import com.example.uitest.datas.BottomMenuContentList
-import com.example.uitest.datas.NavigationHost
-import com.example.uitest.ui.BottomMenu
-import com.example.uitest.ui.theme.Blue900
-import com.example.uitest.ui.theme.ThisAppCustomizedBackgroundColorByMe
-import com.example.uitest.ui.theme.UiTestTheme
+import com.example.takecare.datas.BottomMenuContentList
+import com.example.takecare.datas.NavigationHost
+import com.example.takecare.ui.BottomMenu
+import com.example.takecare.ui.theme.Blue900
+import com.example.takecare.ui.theme.ThisAppCustomizedBackgroundColorByMe
+import com.example.takecare.ui.theme.UiTestTheme
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.R)

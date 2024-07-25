@@ -1,4 +1,4 @@
-package com.example.uitest.ui
+package com.example.takecare.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -41,8 +41,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.uitest.R
-import com.example.uitest.datas.TimeOfMeditate
+import com.example.takecare.R
+import com.example.takecare.datas.TimeOfMeditate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -79,7 +79,7 @@ fun MeditationScreen() {
 fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
     var timeInSeconds by remember { mutableIntStateOf(totalTimeInSeconds) }
     val minutes = timeInSeconds / 60
-    val seconds = timeInSeconds % 60
+//    val seconds = timeInSeconds % 60
 
     var isPlaying by remember { mutableStateOf(false) }
     var isReadyToReset by remember { mutableStateOf(false) }
@@ -110,7 +110,7 @@ fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
         verticalArrangement = Arrangement.SpaceEvenly,
     ) { //column space
         Text(
-            text = String.format("%02d:%02d", minutes, seconds),
+            text = String.format("%02d min", minutes),
             fontSize = 50.sp,
             color = Color.White,
             textAlign = TextAlign.Center
@@ -119,12 +119,14 @@ fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly,
         ) { //column space
-            Text(
-                text = "Start Your Meditation Session",
-                fontSize = 25.sp,
-                color = Color.White,
-                textAlign = TextAlign.Center
-            )
+            if (!isPlaying && timeInSeconds >= 0){
+                Text(
+                    text = "Start Your Meditation Session",
+                    fontSize = 25.sp,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+            }
             Spacer(modifier = Modifier.height(18.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -139,9 +141,9 @@ fun CountdownTimer(totalTimeInSeconds: Int, soundResId: Int) {
                         .background(color = Color(0xEE5C73F1))
                         .clickable {
                             if (timeInSeconds > 300) { timeInSeconds -= 300 ; return@clickable }
-                            if (timeInSeconds == 300 || timeInSeconds < 300 && timeInSeconds > 0) { timeInSeconds -= 60 ; return@clickable }
-                            if (timeInSeconds <= 60 ){timeInSeconds = 0 ; return@clickable }
-                            if (timeInSeconds < 0  || timeInSeconds == 0) { timeInSeconds = 0 }
+                            if (timeInSeconds == 300 || timeInSeconds in 1..299) { timeInSeconds -= 60 ; return@clickable }
+                            if (timeInSeconds in 0..60) { timeInSeconds = 0 ; !isPlaying ; return@clickable  }
+//                            if (timeInSeconds <=0 ){ timeInSeconds = 0 }
                         }
                 ) {
                     Icon(
